@@ -3,11 +3,14 @@ import * as dotenv from 'dotenv';
 
 dotenv.config({ path: '.env.local' });
 
+  const databaseUrl = process.env.DATABASE_URL
+
+
 const config: { [key: string]: Knex.Config } = {
   development: {
     client: 'postgresql',
     connection: {
-      connectionString: process.env.DATABASE_URL,
+      connectionString: databaseUrl,
       ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false,
     },
     pool: {
@@ -26,7 +29,7 @@ const config: { [key: string]: Knex.Config } = {
   staging: {
     client: 'postgresql',
     connection: {
-      connectionString: process.env.DATABASE_URL,
+      connectionString: databaseUrl,
       ssl: { rejectUnauthorized: false }
     },
     pool: {
@@ -45,7 +48,7 @@ const config: { [key: string]: Knex.Config } = {
   production: {
     client: 'postgresql',
     connection: {
-      connectionString: process.env.DATABASE_URL,
+      connectionString: databaseUrl,
       ssl: { rejectUnauthorized: false }
     },
     pool: {

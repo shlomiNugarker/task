@@ -5,9 +5,9 @@
     "build": "next build",
     "start": "next start",
     "db:test-knex": "npx tsx scripts/test-knex-connection.ts",
-    "db:migrate": "npx knex migrate:latest --knexfile knexfile.ts",
+    "db:migrate": "npx tsx scripts/run-migration.ts",
     "db:rollback": "npx knex migrate:rollback --knexfile knexfile.ts",
-    "db:seed": "npx tsx -r dotenv/config node_modules/.bin/knex seed:run --knexfile knexfile.ts"
+    "db:seed": "npx knex seed:run --knexfile knexfile.ts"
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.1.10",
